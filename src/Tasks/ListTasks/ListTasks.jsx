@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useDrag, useDrop } from 'react-dnd';
+import toast from 'react-hot-toast';
 import { FaCircleXmark } from "react-icons/fa6";
 
 const ListTasks = ({ tasks, setTasks }) => {
@@ -35,45 +37,81 @@ const ListTasks = ({ tasks, setTasks }) => {
 export default ListTasks;
 
 const Section = ({ status, tasks, setTasks, todos, onGoing, complete }) => {
+
+    const [{ isOver }, drop] = useDrop(() => ({
+        accept: "task",
+        drop: (item) => addItemToSection(item.id),
+        collect: (monitor) => ({
+            isOver: !!monitor.isOver()
+        })
+    }))
+
     let text = "Todo";
     let bg = "bg-slate-500"
     let tasksToMap = todos
 
-    if(status === 'ongoing'){
-        text = 'In Progress'
+    if (status === 'ongoing') {
+        text = 'On Going'
         bg = "bg-purple-500"
         tasksToMap = onGoing
     }
-    if(status === 'complete'){
+    if (status === 'complete') {
         text = 'Complete'
         bg = "bg-green-500"
         tasksToMap = complete
     }
 
+    const addItemToSection = (id) => {
+        setTasks(prev=>{
+            const mTasks = prev.map(t=>{
+                if(t.id === id){
+                    return{...t,status: status}
+                }
+                return t;
+            })
 
-    return (<div className='w-64'>
-        <Header text={text} bg={bg} count={tasksToMap.length}/> 
-        {tasksToMap.length > 0 && tasksToMap.map(task=><Task 
-        key={task.id}
-        task={task}
-        tasks = {tasks}
-        setTasks={setTasks}
+            localStorage.setItem("tasks",JSON.stringify(mTasks))
+            toast("Task Status Changed",{icon: "😲"})
+            return mTasks;
+        })
+    }
+
+    return (<div className={`w-64 rounded-md p-2 ${isOver ? 'bg-slate-200' : ""}`} ref={drop}>
+        <Header text={text} bg={bg} count={tasksToMap.length} />
+        {tasksToMap.length > 0 && tasksToMap.map(task => <Task
+            key={task.id}
+            task={task}
+            tasks={tasks}
+            setTasks={setTasks}
         ></Task>)}
     </div>)
 }
-const Header = ({ text,bg,count}) => {
+const Header = ({ text, bg, count }) => {
     return (<div className={`${bg} flex items-center h-12 pt-4 rounded-md uppercase text-sm text-white`}>
         {text} <div className='ml-2 bg-white w-5 h-5 text-black rounded-full flex items-center justify-center'>{count}</div>
     </div>)
 }
-const Task = ({task,tasks, setTasks}) => {
+const Task = ({ task, tasks, setTasks }) => {
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: "task",
+        item: { id: task.id },
+        collect: (monitor) => ({
+            isDragging: !!monitor.isDragging()
+        })
+    }))
 
-    const handleRemove = (id)=>{
-        console.log(id);
+    console.log(isDragging);
+
+    const handleRemove = (id) => {
+        const fTasks = tasks.filter(t => t.id !== id)
+        localStorage.setItem("tasks", JSON.stringify(fTasks));
+
+        setTasks(fTasks)
+        toast("Task Removed", { icon: "☠️" })
     }
 
-    return (<div className={`relative p-4 mt-8 shadow-md cursor-grab`}>
+    return (<div ref={drag} className={`relative ${isDragging ? "opacity-25" : "opacity-100"} p-4 mt-8 shadow-md cursor-grab`}>
         <p>{task.name}</p>
-        <button onClick={()=>handleRemove(task.id)} className='absolute bottom-1 right-1 text-slate-400'><FaCircleXmark /></button>
+        <button onClick={() => handleRemove(task.id)} className='absolute bottom-1 right-1 text-slate-400'><FaCircleXmark /></button>
     </div>)
 }
