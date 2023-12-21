@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import toast from 'react-hot-toast';
-import { FaCircleXmark } from "react-icons/fa6";
+import { FaCircleXmark, FaMarker } from "react-icons/fa6";
 
 const ListTasks = ({ tasks, setTasks }) => {
     const [todos, setTodos] = useState([])
@@ -46,7 +46,7 @@ const Section = ({ status, tasks, setTasks, todos, onGoing, complete }) => {
         })
     }))
 
-    let text = "Todo";
+    let text = "To-do";
     let bg = "bg-slate-500"
     let tasksToMap = todos
 
@@ -56,22 +56,22 @@ const Section = ({ status, tasks, setTasks, todos, onGoing, complete }) => {
         tasksToMap = onGoing
     }
     if (status === 'complete') {
-        text = 'Complete'
+        text = 'Completed'
         bg = "bg-green-500"
         tasksToMap = complete
     }
 
     const addItemToSection = (id) => {
-        setTasks(prev=>{
-            const mTasks = prev.map(t=>{
-                if(t.id === id){
-                    return{...t,status: status}
+        setTasks(prev => {
+            const mTasks = prev.map(t => {
+                if (t.id === id) {
+                    return { ...t, status: status }
                 }
                 return t;
             })
 
-            localStorage.setItem("tasks",JSON.stringify(mTasks))
-            toast("Task Status Changed",{icon: "😲"})
+            localStorage.setItem("tasks", JSON.stringify(mTasks))
+            toast("Task Status Changed", { icon: "😲" })
             return mTasks;
         })
     }
@@ -87,9 +87,14 @@ const Section = ({ status, tasks, setTasks, todos, onGoing, complete }) => {
     </div>)
 }
 const Header = ({ text, bg, count }) => {
-    return (<div className={`${bg} flex items-center h-12 pt-4 rounded-md uppercase text-sm text-white`}>
-        {text} <div className='ml-2 bg-white w-5 h-5 text-black rounded-full flex items-center justify-center'>{count}</div>
-    </div>)
+    return (
+        <div className={`${bg} flex items-center justify-center h-12  rounded-md uppercase text-sm text-white`}>
+            {text}
+            <div className='ml-2 bg-white w-5 h-5 text-black rounded-full flex items-center justify-center'>
+                {count}
+            </div>
+        </div>
+    )
 }
 const Task = ({ task, tasks, setTasks }) => {
     const [{ isDragging }, drag] = useDrag(() => ({
@@ -100,7 +105,7 @@ const Task = ({ task, tasks, setTasks }) => {
         })
     }))
 
-    console.log(isDragging);
+    // console.log(isDragging);
 
     const handleRemove = (id) => {
         const fTasks = tasks.filter(t => t.id !== id)
@@ -110,8 +115,15 @@ const Task = ({ task, tasks, setTasks }) => {
         toast("Task Removed", { icon: "☠️" })
     }
 
-    return (<div ref={drag} className={`relative ${isDragging ? "opacity-25" : "opacity-100"} p-4 mt-8 shadow-md cursor-grab`}>
-        <p>{task.name}</p>
-        <button onClick={() => handleRemove(task.id)} className='absolute bottom-1 right-1 text-slate-400'><FaCircleXmark /></button>
+    return (<div ref={drag} className={`relative ${isDragging ? "opacity-25" : "opacity-100"} p-4 mt-8 shadow-xl border cursor-grab`}>
+        <p><span className='font-semibold'>Title: </span> {task.name}</p>
+        <p><span className='font-semibold'>Description: </span> {task.description}</p>
+        <p><span className='font-semibold'>Deadline: </span> {task.deadline}</p>
+        <p><span className='font-semibold'>Priority: </span> {task.priority}</p>
+        <div className='flex gap-4 absolute top-1 right-1 text-slate-400'>
+            
+        <button onClick={() => handleRemove(task.id)}><FaMarker /></button>
+        <button onClick={() => handleRemove(task.id)} ><FaCircleXmark /></button>
+        </div>
     </div>)
 }
