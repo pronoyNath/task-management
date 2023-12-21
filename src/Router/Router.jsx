@@ -5,6 +5,8 @@ import Contact from "../components/Contact/Contact";
 import MainLayout from "../components/Layout/MainLayout";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import Tasks from "../Tasks/Tasks";
 
 
 const router = createBrowserRouter([
@@ -33,6 +35,16 @@ const router = createBrowserRouter([
     {
         path: '/register',
         element: <Register></Register>
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+              path: 'tasks',
+              element: <Tasks></Tasks>
+            }
+        ]
     }
 ])
 

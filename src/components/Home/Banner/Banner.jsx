@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const Banner = () => {
@@ -9,7 +10,9 @@ const Banner = () => {
                     <div className="max-w-md">
                       
                         <p className="mb-5 font-semibold text-xl">"Seize the day with your to-do list! Each task completed is a step toward your goals. Keep it simple, stay focused, and make progress. You've got this!"</p>
+                        <Link to={'/login'}>
                         <button className="btn bg-green-600 text-white border-none hover:bg-green-800">Let’s Explore</button>
+                        </Link>
                     </div>
                 </div>
             </div>
