@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import toast from 'react-hot-toast';
 import { FaCircleXmark, FaMarker } from "react-icons/fa6";
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const ListTasks = ({ tasks, setTasks }) => {
+    const { user } = useContext(AuthContext);
+
     const [todos, setTodos] = useState([])
     const [onGoing, setOngoing] = useState([])
     const [complete, setComplete] = useState([])
 
     useEffect(() => {
-        const fTodos = tasks.filter(task => task.status === 'todo')
-        const fOnGoing = tasks.filter(task => task.status === 'ongoing')
-        const fComplete = tasks.filter(task => task.status === 'complete')
+        const userEmail = user?.email; 
 
+        const fTodos = tasks.filter(task => task.status === 'todo' && task.email === userEmail);
+        const fOnGoing = tasks.filter(task => task.status === 'ongoing' && task.email === userEmail);
+        const fComplete = tasks.filter(task => task.status === 'complete' && task.email === userEmail);
         setTodos(fTodos)
         setOngoing(fOnGoing)
         setComplete(fComplete)
-    }, [tasks])
+    }, [tasks,user?.email])
 
     const statuses = ["todo", "ongoing", "complete"]
 
@@ -121,9 +125,9 @@ const Task = ({ task, tasks, setTasks }) => {
         <p><span className='font-semibold'>Deadline: </span> {task.deadline}</p>
         <p><span className='font-semibold'>Priority: </span> {task.priority}</p>
         <div className='flex gap-4 absolute top-1 right-1 text-slate-400'>
-            
-        <button onClick={() => handleRemove(task.id)}><FaMarker /></button>
-        <button onClick={() => handleRemove(task.id)} ><FaCircleXmark /></button>
+
+            <button><FaMarker /></button>
+            <button onClick={() => handleRemove(task.id)} ><FaCircleXmark /></button>
         </div>
     </div>)
 }

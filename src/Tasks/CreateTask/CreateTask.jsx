@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { v4 as uuidv4 } from 'uuid';
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const CreateTask = ({ tasks, setTasks }) => {
+const {user} = useContext(AuthContext);
+
+
     const [task, setTask] = useState({
         id: '',
         name: '',
@@ -67,7 +71,7 @@ const CreateTask = ({ tasks, setTasks }) => {
                     <input type="date"
                         value={task.deadline}
                         className="border-2 border-slate-400 bg-slate-100 rounded-md mr-4 h-12 w-64 px-1"
-                        onChange={(e) => setTask({ ...task, deadline: e.target.value })}
+                        onChange={(e) => setTask({ ...task, deadline: e.target.value,email:user?.email })}
                         required
                     />
                 </div>
