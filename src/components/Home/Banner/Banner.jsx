@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Banner = () => {
     return (
         <div className="mb-10">
-            <div className="hero min-h-[600px]" style={{ backgroundImage: 'url(https://casengine.app/wp-content/uploads/2021/11/MicrosoftTeams-image-1-1200x675.png)' }}>
+            <div className="hero min-h-[600px]" style={{ backgroundImage: 'url(https://i.ibb.co/VxybfSD/Microsoft-Teams-image-1-1200x675.png)' }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">

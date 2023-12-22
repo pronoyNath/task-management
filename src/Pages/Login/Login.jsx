@@ -120,7 +120,7 @@ const Login = () => {
         <div data-aos="zoom-in" className="">
 
 
-            <div className="hero  min-h-[700px] overflow-x-hidden" style={{ backgroundImage: 'url(https://projectsly.com/images/task-management-system-screenshot-1.png?v=1691124479409199525)' }}>
+            <div className="hero  min-h-[700px] overflow-x-hidden" style={{ backgroundImage: 'url(https://i.ibb.co/4RSPKGX/log.png)' }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content  text-neutral-content">
                     <div className="max-w-6xl flex items-center">

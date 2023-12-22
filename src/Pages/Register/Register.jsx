@@ -104,7 +104,7 @@ const Register = () => {
     return (
         <div data-aos="zoom-in" className=" ">
 
-            <div className="hero min-h-[700px] overflow-x-hidden" style={{ backgroundImage: 'url(https://www.forbes.com/advisor/wp-content/uploads/2023/08/free_TM_software_-_article_image.jpg)' }}>
+            <div className="hero min-h-[700px] overflow-x-hidden" style={{ backgroundImage: 'url(https://i.ibb.co/yqjjnsT/reg.jpg)' }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content  text-neutral-content">
                     <div className="max-w-6xl flex items-center">
