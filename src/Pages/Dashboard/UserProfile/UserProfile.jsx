@@ -12,9 +12,11 @@ const UserProfile = () => {
             .then(({ data }) => setUserInfo(data))
     }, [ user?.email,axiosPublic])
 
-console.log(userInfo,"kkkkkkk");
+// console.log(userInfo,"kkkkkkk");
 
     return (
+        <div className='h-screen'>
+            
         <div className="max-w-md p-8 sm:flex sm:space-x-6 dark:bg-gray-900 dark:text-gray-100" >
             <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0" >
                 <img src={userInfo?.imageURL} alt="" className="object-cover object-center w-full h-full rounded dark:bg-gray-500" />
@@ -33,6 +35,7 @@ console.log(userInfo,"kkkkkkk");
                    
                 </div>
             </div>
+        </div>
         </div>
     );
 };
