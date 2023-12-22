@@ -22,7 +22,10 @@ const Tasks = () => {
             <div className='flex flex-col items-center justify-center gap-16 p-3'>
                 <CreateTask tasks={tasks} setTasks={setTasks}></CreateTask>
                 <h3 className='text-3xl font-semibold text-center'>Task Status</h3>
+                <div className=''>
+
                 <ListTasks tasks={tasks} setTasks={setTasks}></ListTasks>
+                </div>
             </div>
             </DndProvider>
         </>

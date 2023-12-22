@@ -85,8 +85,8 @@ const Dashboard = () => {
 
                 {
                     isDashboardActive &&
-                    <div className="h-screen w-1/2 md:w-full">
-                        <h3 className="text-3xl text-center font-semibold uppercase">Welcome {userInfo?.name}</h3>
+                    <div className="h-[700px] md:w-full">
+                        <h3 className="text-base md:text-3xl text-center font-semibold uppercase">Welcome {userInfo?.name}</h3>
                         <p className="p-10 text-black ">
                             How to Use the Drag-and-Drop Feature:<br/><br/>
                             To-Do: <br/>

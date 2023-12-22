@@ -21,7 +21,7 @@ const ListTasks = ({ tasks, setTasks }) => {
     const statuses = ["todo", "ongoing", "complete"]
 
     return (
-        <div className='flex gap-16'>
+        <div className='gap-5 md:gap-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {statuses.map((status, index) => <Section key={index}
                 status={status}
                 tasks={tasks}

@@ -10,7 +10,7 @@ const CreateTask = ({ tasks, setTasks }) => {
         status: 'todo',
     })
 
-    console.log("taskkkk",task);
+    // console.log("taskkkk",task);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -41,7 +41,7 @@ const CreateTask = ({ tasks, setTasks }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="grid grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
                 <div className="flex flex-col">
                     <label>Title</label>
                     <input type="text"
