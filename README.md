@@ -30,9 +30,6 @@ This is a task management system built with React.js, providing a responsive des
 
 - **Additional Features:**
   - Notifications using toast notifications for task assignments, updates, and deadlines.
-  - Optional: Animation library (Framer Motion / Spring.js / AOS).
-
-- **Bonus Feature:**
   - Task editing functionality for users to edit and save task details.
 
 ## Usage
