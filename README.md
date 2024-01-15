@@ -40,3 +40,7 @@ This is a task management system built with React.js, providing a responsive des
 1. Clone the repository.
    ```bash
    git clone https://github.com/your-username/task-management-system.git
+
+2. cd task-management-system
+3. npm install
+4. npm run dev

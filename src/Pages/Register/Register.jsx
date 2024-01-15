@@ -113,9 +113,9 @@ const Register = () => {
                             <Lottie animationData={registrationAnimation} className=""></Lottie>
                         </div>
 
-                        <div className="w-full flex-1 max-w-xl rounded-md shadow p-5 sm:p-8 dark:bg-green-800 dark:text-gray-100" >
+                        <div className="w-full flex-1 max-w-xl rounded-md shadow p-5 sm:p-8 bg-green-800 text-gray-100" >
                             <h2 className="mb-3 text-3xl font-semibold text-center">Register your account</h2>
-                            <p className="text-sm text-center dark:text-gray-400 hover:scale-110 transform transition-transform duration-300">Already have an account?
+                            <p className="text-sm text-center text-gray-400 hover:scale-110 transform transition-transform duration-300">Already have an account?
                                 <Link to='/login' rel="noopener noreferrer" className="focus:underline hover:underline ml-5 text-green-500 text-xl">login here</Link>
                             </p>
 
@@ -128,30 +128,30 @@ const Register = () => {
 
                                     <div className="space-y-2" >
                                         <label className="block text-sm text-left">Name</label>
-                                        <input type="name" name="name" id="name" placeholder="abc" className="w-full px-3 py-2 border rounded-md   text-black focus:dark:border-violet-400" required />
+                                        <input type="name" name="name" id="name" placeholder="abc" className="w-full px-3 py-2 border rounded-md   text-black focus:border-violet-400" required />
                                     </div>
                                     <div className="space-y-2" >
                                         <label className="block text-sm text-left">Email address</label>
-                                        <input type="email" name="email" id="email" placeholder="xyz@gmail.com" className="w-full px-3 py-2 border rounded-md   text-black focus:dark:border-violet-400" required />
+                                        <input type="email" name="email" id="email" placeholder="xyz@gmail.com" className="w-full px-3 py-2 border rounded-md   text-black focus:border-violet-400" required />
                                     </div>
                                     <div className="space-y-2" >
                                         <div className="flex justify-between" >
                                             <label name="password" className="text-sm">Password</label>
 
                                         </div>
-                                        <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md   text-black focus:dark:border-violet-400" required />
+                                        <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md   text-black focus:border-violet-400" required />
                                     </div>
                                     <div className="space-y-2" >
                                         <div className="flex justify-between" >
                                             <label name="password" className="text-sm">Confirm Password</label>
 
                                         </div>
-                                        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="*****" className="w-full px-3 py-2 border rounded-md   text-black focus:dark:border-violet-400" required />
+                                        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="*****" className="w-full px-3 py-2 border rounded-md   text-black focus:border-violet-400" required />
                                     </div>
                                     <p className='text-red-500'>{registerError}</p>
                                 </div>
 
-                                <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md dark:bg-green-500 dark:text-white hover:scale-105 transform transition-transform duration-300">
+                                <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-green-500 text-white hover:scale-105 transform transition-transform duration-300">
                                     {
                                         loading ? <FaSpinner className='mx-auto animate-spin text-xl'></FaSpinner> : 'Register'
                                     }
