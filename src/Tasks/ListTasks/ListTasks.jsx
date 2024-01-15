@@ -12,18 +12,22 @@ const ListTasks = ({ tasks, setTasks }) => {
     const [complete, setComplete] = useState([])
 
     useEffect(() => {
-        const userEmail = user?.email; 
+        const userEmail = user?.email;
 
         const fTodos = tasks.filter(task => task.status === 'todo' && task.email === userEmail);
         const fOnGoing = tasks.filter(task => task.status === 'ongoing' && task.email === userEmail);
         const fComplete = tasks.filter(task => task.status === 'complete' && task.email === userEmail);
+
         setTodos(fTodos)
         setOngoing(fOnGoing)
         setComplete(fComplete)
-    }, [tasks,user?.email])
+
+    }, [tasks, user?.email])
 
     const statuses = ["todo", "ongoing", "complete"]
-
+    console.log(todos);
+    console.log(onGoing);
+    console.log(complete);
     return (
         <div className='gap-5 md:gap-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {statuses.map((status, index) => <Section key={index}
@@ -65,8 +69,8 @@ const Section = ({ status, tasks, setTasks, todos, onGoing, complete }) => {
         tasksToMap = complete
     }
 
-    const addItemToSection = (id) => {
-        setTasks(prev => {
+    const addItemToSection = async (id) => {
+        await setTasks(prev => {
             const mTasks = prev.map(t => {
                 if (t.id === id) {
                     return { ...t, status: status }

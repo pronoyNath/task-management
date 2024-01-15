@@ -88,13 +88,13 @@ const Dashboard = () => {
                     <div className="h-[700px] md:w-full">
                         <h3 className="text-base md:text-3xl text-center font-semibold uppercase">Welcome {userInfo?.name}</h3>
                         <p className="p-10 text-black ">
-                            How to Use the Drag-and-Drop Feature:<br/><br/>
-                            To-Do: <br/>
+                          <span className="font-semibold">  How to Use the Drag-and-Drop Feature:</span><br/><br/>
+                          <span className="font-semibold underline"> To-Do:</span>   <br/>
                             Start with your tasks in the 'To-Do' section.<br/>
                             Simply click, hold, and drag a task card to initiate movement.<br/><br/>
-                            In Progress:<br/>
+                            <span className="font-semibold underline">  In Progress:</span>  <br/>
                             Drag the task card to the 'In Progress' section when you begin working on it.<br/><br/>
-                            Complete:<br/>
+                            <span className="font-semibold underline"> Complete:</span>    <br/>
 
                             Once a task is finished, effortlessly move it to the 'Complete' section.<br/>
                         </p>

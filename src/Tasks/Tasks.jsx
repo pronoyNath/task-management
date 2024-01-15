@@ -11,7 +11,7 @@ const Tasks = () => {
     
 
     useEffect(() => {
-        setTasks(JSON.parse(localStorage.getItem("tasks")))
+        setTasks(JSON.parse(localStorage.getItem("tasks")|| "[]"))
     }, [])
 
     return (
@@ -23,7 +23,7 @@ const Tasks = () => {
                 <CreateTask tasks={tasks} setTasks={setTasks}></CreateTask>
                 <h3 className='text-3xl font-semibold text-center'>Task Status</h3>
                 <div className=''>
-
+ 
                 <ListTasks tasks={tasks} setTasks={setTasks}></ListTasks>
                 </div>
             </div>
